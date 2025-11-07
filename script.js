@@ -1,23 +1,16 @@
-// ... existing data simulation ...
-
-// --- Game Page Logic (game.html) ---
-if (document.getElementById('selected-sport-header')) {
-    const sport = localStorage.getItem('selectedSport') || 'Football'; 
-    // Title update
-    document.getElementById('game-title').textContent = ${sport} | FanConnect;
-    document.getElementById('selected-sport-header').textContent = sport;
-    
-    // ... rest of game page logic ...
-}
-
-// ... existing goToChat function ...
-
-// --- Chat Page Logic (chat.html) ---
-if (document.getElementById('chat-messages')) {
-    const matchTeams = localStorage.getItem('selectedMatchTeams') || 'A vs B';
-    // Title update
-    document.getElementById('chat-title').textContent = ${matchTeams} | FanConnect Chat;
-    document.getElementById('match-header').textContent = Chat: ${matchTeams};
-
-    // ... rest of chat logic ...
+{
+  "name": "ultimate-sports-hub",
+  "version": "1.0.0",
+  "description": "Ultimate International Sports Hub - Live scores, news, quizzes, and interactive features",
+  "main": "index.html",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "live-server --port=3000"
+  },
+  "keywords": ["sports", "international", "live-scores", "news", "interactive"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
 }
