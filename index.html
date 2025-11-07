@@ -4,312 +4,95 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ultimate International Sports Hub</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="/_sdk/element_sdk.js"></script>
-  <script src="/_sdk/data_sdk.js"></script>
+  <link rel="stylesheet" href="styles.css">
   <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="/_sdk/element_sdk.js" type="text/javascript"></script>
   <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
  </head>
  <body>
-  <header><span class="live-indicator"></span> <span id="siteTitle">FanConnect</span>
-  </header>
-  <div class="container"><!-- Live Ticker -->
-   <div class="live-scores-ticker">
-    <div class="ticker-content"><span class="ticker-item" id="tickerMessage">🔴 LIVE: Real-time international sports updates!</span> <span class="ticker-item">⚽ Brazil 2-1 Argentina (FIFA World Cup Qualifier - LIVE)</span> <span class="ticker-item">🏏 India 287/6 vs Australia 245 all out (Test Championship)</span> <span class="ticker-item">🏀 USA 89-92 Spain (FIBA World Cup - 4th Quarter)</span> <span class="ticker-item">🎾 Djokovic leads Alcaraz 6-4, 4-3 (Wimbledon Final)</span> <span class="ticker-item">🏉 South Africa 18-15 New Zealand (Rugby World Cup Final)</span> <span class="ticker-item">🏅 Swimming Finals - Dressel vs Peaty (Olympics LIVE)</span>
-    </div>
-   </div><!-- Live Stats -->
-   <div class="stats-grid">
-    <div class="stat-item"><span class="stat-number" id="onlineUsers">2,847</span>
-     <div class="stat-label">
-      Online Now
-     </div>
-    </div>
-    <div class="stat-item"><span class="stat-number" id="liveGames">24</span>
-     <div class="stat-label">
-      Live Games
-     </div>
-    </div>
-    <div class="stat-item"><span class="stat-number" id="chatMessages">45,892</span>
-     <div class="stat-label">
-      Chat Messages
-     </div>
-    </div>
-    <div class="stat-item"><span class="stat-number" id="activeUsers">456</span>
-     <div class="stat-label">
-      Active Users
-     </div>
-    </div>
-   </div><!-- Welcome Page -->
-   <div id="welcomePage" class="welcome-page">
-    <div class="welcome-container">
-     <div class="welcome-hero">
-      <div class="sports-icons-animation"><span class="floating-icon" style="animation-delay: 0s;">⚽</span> <span class="floating-icon" style="animation-delay: 0.5s;">🏀</span> <span class="floating-icon" style="animation-delay: 1s;">🎾</span> <span class="floating-icon" style="animation-delay: 1.5s;">🏏</span> <span class="floating-icon" style="animation-delay: 2s;">🏉</span> <span class="floating-icon" style="animation-delay: 2.5s;">🏅</span>
-      </div>
-      <h1 class="hero-title">🌍 Welcome to the FanConnect</h1>
-      <p class="hero-subtitle">Your gateway to live scores, breaking news, interactive features, and global sports competitions</p>
-      <div class="name-input-section">
-       <h2>👋 Let's Get Started!</h2>
-       <p>Enter your name to personalize your sports experience</p>
-       <div class="name-input-container"><input type="text" id="userNameInput" class="name-input" placeholder="Enter your name..." maxlength="30"> <button id="enterSiteBtn" class="enter-button" onclick="enterSite()"> <span class="button-text">Enter Sports Hub</span> <span class="button-icon">🚀</span> </button>
-       </div>
-       <div class="features-preview">
-        <div class="feature-item"><span class="feature-icon">📺</span> <span class="feature-text">Live Scores &amp; Updates</span>
-        </div>
-        <div class="feature-item"><span class="feature-icon">🗞</span> <span class="feature-text">Breaking Sports News</span>
-        </div>
-        <div class="feature-item"><span class="feature-icon">🧠</span> <span class="feature-text">Interactive Quizzes</span>
-        </div>
-        <div class="feature-item"><span class="feature-icon">💬</span> <span class="feature-text">Global Sports Chat</span>
-        </div>
-        <div class="feature-item"><span class="feature-icon">🎮</span> <span class="feature-text">Mini Games</span>
-        </div>
-        <div class="feature-item"><span class="feature-icon">⭐</span> <span class="feature-text">Player Ratings</span>
-        </div>
-       </div>
-      </div>
-     </div>
+  <div class="container"><!-- Header -->
+   <div class="header">
+    <h1 id="site-title">Ultimate International Sports Hub</h1>
+    <p id="welcome-message">Choose Your International Sport</p>
+    <div class="ticker" id="ticker">
+     🔴 LIVE: Real-time international sports updates!
     </div>
    </div><!-- Home Page -->
-   <div id="homePage" class="home-page" style="display: none;">
-    <div class="welcome-section">
-     <h1 id="welcomeMessage">Choose Your International Sport</h1>
-     <p id="personalizedWelcome">Stay updated with the latest sports news and experience live scores, interactive features, quizzes, chats, games, and international competitions from around the world</p>
-    </div><!-- Latest Sports News Section -->
-    <div class="news-section">
-     <h2 class="news-title">🗞 Latest Sports Headlines</h2>
-     <div class="news-grid" id="newsGrid"><!-- News articles will be populated here -->
-     </div><button class="refresh-button" onclick="refreshNews()"> 🔄 Refresh News </button>
-    </div>
-    <div class="sports-selection-title">
-     <h2>🌍 Select Your Sport</h2>
-     <p>Choose from our international sports coverage</p>
-    </div>
-    <div class="international-sports">
-     <div class="sport-card" onclick="selectSport('football', '⚽', 'FIFA World Cup, UEFA Champions League, Premier League')"><span class="sport-icon">⚽</span>
-      <h3>Football (Soccer)</h3>
-      <div class="sport-description">
-       The world's most popular sport with billions of fans globally
+   <div id="home-page" class="page active">
+    <div class="sports-grid">
+     <div class="sport-card" onclick="selectSport('Football')">
+      <div class="icon">
+       ⚽
       </div>
-      <div class="sport-stats">
-       <div class="sport-stat-item"><span class="sport-stat-number">32</span>
-        <div class="sport-stat-label">
-         Live Matches
-        </div>
-       </div>
-       <div class="sport-stat-item"><span class="sport-stat-number">156</span>
-        <div class="sport-stat-label">
-         Features
-        </div>
-       </div>
-       <div class="sport-stat-item"><span class="sport-stat-number">4.2B</span>
-        <div class="sport-stat-label">
-         Fans
-        </div>
-       </div>
-      </div>
+      <h3>Football</h3>
+      <p>International Matches</p>
      </div>
-     <div class="sport-card" onclick="selectSport('cricket', '🏏', 'ICC World Cup, IPL, The Ashes, T20 World Cup')"><span class="sport-icon">🏏</span>
-      <h3>Cricket</h3>
-      <div class="sport-description">
-       International cricket with Test, ODI, and T20 formats
+     <div class="sport-card" onclick="selectSport('Basketball')">
+      <div class="icon">
+       🏀
       </div>
-      <div class="sport-stats">
-       <div class="sport-stat-item"><span class="sport-stat-number">12</span>
-        <div class="sport-stat-label">
-         Live Matches
-        </div>
-       </div>
-       <div class="sport-stat-item"><span class="sport-stat-number">45</span>
-        <div class="sport-stat-label">
-         Features
-        </div>
-       </div>
-       <div class="sport-stat-item"><span class="sport-stat-number">2.5B</span>
-        <div class="sport-stat-label">
-         Fans
-        </div>
-       </div>
-      </div>
-     </div>
-     <div class="sport-card" onclick="selectSport('basketball', '🏀', 'NBA, FIBA World Cup, EuroLeague, Olympics')"><span class="sport-icon">🏀</span>
       <h3>Basketball</h3>
-      <div class="sport-description">
-       Fast-paced international basketball competitions
-      </div>
-      <div class="sport-stats">
-       <div class="sport-stat-item"><span class="sport-stat-number">18</span>
-        <div class="sport-stat-label">
-         Live Matches
-        </div>
-       </div>
-       <div class="sport-stat-item"><span class="sport-stat-number">67</span>
-        <div class="sport-stat-label">
-         Features
-        </div>
-       </div>
-       <div class="sport-stat-item"><span class="sport-stat-number">825M</span>
-        <div class="sport-stat-label">
-         Fans
-        </div>
-       </div>
-      </div>
+      <p>NBA &amp; International</p>
      </div>
-     <div class="sport-card" onclick="selectSport('tennis', '🎾', 'Grand Slams, ATP Tour, WTA Tour, Davis Cup')"><span class="sport-icon">🎾</span>
+     <div class="sport-card" onclick="selectSport('Tennis')">
+      <div class="icon">
+       🎾
+      </div>
       <h3>Tennis</h3>
-      <div class="sport-description">
-       Individual excellence in international tennis tournaments
-      </div>
-      <div class="sport-stats">
-       <div class="sport-stat-item"><span class="sport-stat-number">24</span>
-        <div class="sport-stat-label">
-         Live Matches
-        </div>
-       </div>
-       <div class="sport-stat-item"><span class="sport-stat-number">89</span>
-        <div class="sport-stat-label">
-         Features
-        </div>
-       </div>
-       <div class="sport-stat-item"><span class="sport-stat-number">1B</span>
-        <div class="sport-stat-label">
-         Fans
-        </div>
-       </div>
-      </div>
+      <p>Grand Slam Events</p>
      </div>
-     <div class="sport-card" onclick="selectSport('rugby', '🏉', 'Rugby World Cup, Six Nations, Super Rugby')"><span class="sport-icon">🏉</span>
+     <div class="sport-card" onclick="selectSport('Cricket')">
+      <div class="icon">
+       🏏
+      </div>
+      <h3>Cricket</h3>
+      <p>Test &amp; ODI Matches</p>
+     </div>
+     <div class="sport-card" onclick="selectSport('Rugby')">
+      <div class="icon">
+       🏉
+      </div>
       <h3>Rugby</h3>
-      <div class="sport-description">
-       International rugby union and league competitions
-      </div>
-      <div class="sport-stats">
-       <div class="sport-stat-item"><span class="sport-stat-number">8</span>
-        <div class="sport-stat-label">
-         Live Matches
-        </div>
-       </div>
-       <div class="sport-stat-item"><span class="sport-stat-number">23</span>
-        <div class="sport-stat-label">
-         Features
-        </div>
-       </div>
-       <div class="sport-stat-item"><span class="sport-stat-number">475M</span>
-        <div class="sport-stat-label">
-         Fans
-        </div>
-       </div>
-      </div>
+      <p>International Tournaments</p>
      </div>
-     <div class="sport-card" onclick="selectSport('olympics', '🏅', 'Summer Olympics, Winter Olympics, Paralympics')"><span class="sport-icon">🏅</span>
-      <h3>Olympics</h3>
-      <div class="sport-description">
-       The ultimate international multi-sport competition
+     <div class="sport-card" onclick="selectSport('Baseball')">
+      <div class="icon">
+       ⚾
       </div>
-      <div class="sport-stats">
-       <div class="sport-stat-item"><span class="sport-stat-number">45</span>
-        <div class="sport-stat-label">
-         Live Events
-        </div>
-       </div>
-       <div class="sport-stat-item"><span class="sport-stat-number">128</span>
-        <div class="sport-stat-label">
-         Features
-        </div>
-       </div>
-       <div class="sport-stat-item"><span class="sport-stat-number">3.2B</span>
-        <div class="sport-stat-label">
-         Viewers
-        </div>
-       </div>
-      </div>
+      <h3>Baseball</h3>
+      <p>MLB &amp; World Series</p>
      </div>
     </div>
    </div><!-- Sport Detail Page -->
-   <div id="sportDetailPage" class="sport-detail-page"><button class="back-button" onclick="goBackHome()">← Back to Sports</button>
-    <div class="sport-header">
-     <h2 id="sportTitle"><span id="sportIcon"></span> <span id="sportName"></span></h2>
-     <p id="sportCompetitions"></p>
-    </div>
-    <div class="content-tabs"><button class="tab-button active" onclick="switchTab('live')">🔴 Live Scores</button> <button class="tab-button" onclick="switchTab('upcoming')">📅 Upcoming</button> <button class="tab-button" onclick="switchTab('quiz')">🧠 Quiz</button> <button class="tab-button" onclick="switchTab('chat')">💬 Chat</button> <button class="tab-button" onclick="switchTab('game')">🎮 Game</button> <button class="tab-button" onclick="switchTab('players')">👥 Players</button> <button class="tab-button" onclick="switchTab('ratings')">⭐ Ratings</button>
-    </div><!-- Live Scores Tab -->
-    <div id="liveTab" class="tab-content active">
-     <div class="interactive-section">
-      <h3 class="section-title"><span class="live-indicator"></span> Live Matches</h3>
-      <div id="liveMatches" class="matches-grid"><!-- Live matches will be populated here -->
-      </div><button class="refresh-button" onclick="refreshLiveScores()"> 🔄 Refresh Live Scores </button>
-     </div>
-    </div><!-- Upcoming Matches Tab -->
-    <div id="upcomingTab" class="tab-content">
-     <div class="interactive-section">
-      <h3 class="section-title">📅 Upcoming Matches</h3>
-      <div id="upcomingMatches" class="matches-grid"><!-- Upcoming matches will be populated here -->
-      </div><button class="refresh-button" onclick="refreshUpcomingMatches()"> 🔄 Refresh Schedule </button>
-     </div>
-    </div><!-- Quiz Tab -->
-    <div id="quizTab" class="tab-content">
-     <div class="interactive-section">
-      <h3 class="section-title">🧠 Sports Quiz Challenge</h3>
-      <div class="quiz-container">
-       <div id="quizContent">
-        <div class="question">
-         <h4 id="questionText">Loading question...</h4>
-         <div class="quiz-options" id="quizOptions"><!-- Options will be populated by JavaScript -->
-         </div><button id="nextQuestionBtn" onclick="nextQuestion()" style="display:none; background:#1e3c72; color:white; border:none; padding:12px 24px; border-radius:8px; cursor:pointer; margin-top:15px;">Next Question</button>
-        </div>
-        <div id="quizScore" style="text-align:center; margin-top:20px; font-size:18px; color:#1e3c72;"></div>
-       </div>
-      </div>
-     </div>
-    </div><!-- Chat Tab -->
-    <div id="chatTab" class="tab-content">
-     <div class="interactive-section">
-      <h3 class="section-title">💬 Live Sports Chat</h3>
-      <div class="chat-container" id="chatContainer">
-       <div class="chat-message">
-        🔴 Welcome to the FanConnect chat! Discuss live matches and share your thoughts!
-       </div>
-       <div class="chat-message">
-        SportsFan_Global: Amazing match between Brazil and Argentina!
-       </div>
-       <div class="chat-message">
-        ChampionViewer: The World Cup qualifiers are so intense!
-       </div>
-      </div>
-      <div class="chat-input-container"><input type="text" class="chat-input" id="chatInput" placeholder="Join the international discussion..." maxlength="200"> <button class="send-btn" onclick="sendMessage()">Send</button>
-      </div>
-     </div>
-    </div><!-- Game Tab -->
-    <div id="gameTab" class="tab-content">
-     <div class="interactive-section">
-      <div class="mini-game">
-       <h3 class="section-title">🎮 Sports Tic-Tac-Toe</h3>
-       <p>Play against the computer! You are X, computer is O.</p>
-       <div class="game-board" id="gameBoard"><!-- Game cells will be populated by JavaScript -->
-       </div><button onclick="resetGame()" style="background:#1e3c72; color:white; border:none; padding:12px 24px; border-radius:8px; cursor:pointer; margin-top:15px;">New Game</button>
-       <div id="gameStatus" style="margin-top:15px; font-size:18px; color:#1e3c72;"></div>
-      </div>
-     </div>
-    </div><!-- Players Tab -->
-    <div id="playersTab" class="tab-content">
-     <div class="interactive-section">
-      <h3 class="section-title">👥 International Players</h3>
-      <div id="playersContainer"><!-- Player cards will be populated by JavaScript -->
-      </div>
-     </div>
-    </div><!-- Ratings Tab -->
-    <div id="ratingsTab" class="tab-content">
-     <div class="interactive-section">
-      <h3 class="section-title">⭐ Rate International Players</h3>
-      <div id="ratingContainer"><!-- Rating cards will be populated by JavaScript -->
+   <div id="sport-page" class="page">
+    <div class="sport-detail"><button class="back-button" onclick="showPage('home-page')">← Back to Sports</button>
+     <h2 class="selected-sport-title" id="selected-sport">Selected Sport</h2>
+     <div class="scores-container" id="live-scores">
+      <div class="loading">
+       Loading scores
       </div>
      </div>
     </div>
+   </div><!-- Chat Page -->
+   <div id="chat-page" class="page">
+    <div class="sport-detail"><button class="back-button" onclick="showPage('sport-page')">← Back to Scores</button>
+     <h2 class="selected-sport-title">Match Chat</h2>
+     <div class="chat-container">
+      <div class="chat-box" id="chat-box">
+       <div class="chat-message">
+        Welcome to the match chat! Share your thoughts about the game.
+       </div>
+      </div>
+      <div class="chat-input-container"><input type="text" id="chat-input" class="chat-input" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)"> <button class="send-button" onclick="sendMessage()">Send</button>
+      </div>
+     </div>
+    </div>
+   </div><!-- Footer -->
+   <div class="footer">
+    <p id="footer-text">Your Ultimate Gateway to International Sports</p>
    </div>
   </div>
-  <footer id="footerText">
-   © 2025 FanConnect | Your Ultimate Gateway to International Sports
-  </footer>
-  <div class="toast" id="toast"></div>
   <script src="script.js"></script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99aa651373625988',t:'MTc2MjQ5Mjk2Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99aab7ff178b5492',t:'MTc2MjQ5NjM2My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
