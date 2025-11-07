@@ -1,6 +1,6 @@
 / Configuration for Element SDK
 const defaultConfig = {
-  site_title: "FanConnect",
+  site_title: "Ultimate International Sports Hub",
   welcome_message: "Choose Your International Sport",
   ticker_message: "🔴 LIVE: Real-time international sports updates!",
   footer_text: "Your Ultimate Gateway to International Sports"
@@ -283,8 +283,7 @@ const sportsPlayers = {
   ],
   cricket: [
     { name: "Virat Kohli", position: "Batsman", team: "India & RCB", stats: "Former Captain, 75+ International Centuries" },
-     {name:"Rishu Mishra",position:"All Rounder",team:"India & CSK", stats:"Future Player, Dream to play for India"},
-    { name: "Rohit Sharma", position: "Batsman", team: "India", stats: "Former Captain, #1 ODI Batsman" },
+    { name: "Babar Azam", position: "Batsman", team: "Pakistan & Peshawar Zalmi", stats: "Current Captain, #1 ODI Batsman" },
     { name: "Steve Smith", position: "Batsman", team: "Australia & Sydney Sixers", stats: "Former Captain, Test Average 60+" }
   ],
   tennis: [
